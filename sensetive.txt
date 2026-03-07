@@ -1,0 +1,30 @@
+Sky_bayan
+---------
+Name: Abdul Zoha
+EmpN: 200161
+Passwd: Abdul@749
+
+
+Absher
+------
+ID: Abdul9368
+Passwd: Abdul@9368
+Iqama: 2623996820
+Mobile: 550759530
+
+
+National Address
+----------------
+ID: Abdul09368
+Passwd: Abdul749
+
+
+ANB
+---
+Iqama: 2623996820
+Passwd: Abdul@9368
+PIN: 9368
+
+Opera
+abdulzoha07@gmail.com
+Indian@9368
