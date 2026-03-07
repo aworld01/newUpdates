@@ -25,6 +25,15 @@ Iqama: 2623996820
 Passwd: Abdul@9368
 PIN: 9368
 
+Urpay (Mada card):
+------------------
+Cardholder name: Abdul Hafizullah
+Card number: 4909 8000 3916 7041
+Expiry date: 02/29
+PIN: 09368
+CVV: 544
+
+
 Opera
 abdulzoha07@gmail.com
 Indian@9368
