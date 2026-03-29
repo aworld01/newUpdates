@@ -1,1 +1,3 @@
-86ca1aa0-34aa-4e8b-a509-50c905bae2a2}
+Delete show more option in contextmenu:
+
+reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905ba5a2a}" /f
