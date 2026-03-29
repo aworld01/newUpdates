@@ -1,0 +1,30 @@
+ESSID: Hotspot name
+
+BSSID: MAC address
+
+Station ID: User MAC Address
+
+Handshake File: Sending password to check
+
+Managed Mode: Normal Mode
+
+Monitor Mode: Extra Featurs
+
+
+sudo su: to root
+ifconfig: check network configuration.
+    eth0 = ethernet 0
+    eth1 = ethernet 1
+    lo = localhost
+    wlan0 = wireless local area network 0
+
+iwconfig: check only wireless network configuration.
+
+airmon-ng start wlan0: enable monitor mode
+
+iwconfig: check mode
+
+airodump-ng wlan0: scan network.
+
+airodump-ng wlan0 --bssid <bssid> --channel <channel> --write <filename>: scan and write a specific user's data.
+
