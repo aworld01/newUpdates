@@ -1,0 +1,30 @@
+1. install node.js
+2. npm i -g opencode-ai
+
+curl -fsSL https://opencode.ai/install | bash: to download "open code"
+
+
+
+'''12:57 / 49:24'''
+INSTALLING UV
+--------------
+Windows Powershell:
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/0.11.20/install.ps1 | iex"
+
+
+sudo apt install wget
+wget -qO- https://astral.sh/uv/install.sh | sh
+
+sudo apt install python3-pip
+pip install uv
+
+
+UV Commands
+-----------
+uv init example: to initialize a project
+uv python list: to check available python versions.
+uv run example.py: to run a python script file.
+uv add ruff: to install ruff package
+uv run ruff check
+uv lock
+uv sync
