@@ -5,7 +5,7 @@ curl -fsSL https://opencode.ai/install | bash: to download "open code"
 
 
 
-'''12:57 / 49:24'''
+'''16:00 / 49:24'''
 INSTALLING UV
 --------------
 Windows Powershell:
