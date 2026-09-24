@@ -1,26 +1,8 @@
-"""
-Extract English-Hindi sentence pairs from a text file into a dictionary.
-
-Expected file format: sentences alternate as
-    English sentence
-    Hindi sentence
-    <blank line>
-    English sentence
-    Hindi sentence
-    <blank line>
-    ...
-
-Blank/extra empty lines are ignored, and lines are simply paired up
-two-at-a-time in the order they appear (first non-empty line = English,
-second non-empty line = Hindi).
-"""
-
 import json
 import sys
 
 
 def extract_sentence_pairs(input_path):
-    """Read the file and return a dict mapping English -> Hindi sentences."""
     with open(input_path, "r", encoding="utf-8") as f:
         lines = [line.strip() for line in f]
 
