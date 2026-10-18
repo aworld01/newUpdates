@@ -1,0 +1,7 @@
+import math
+
+pos = 1
+d_model = 4
+i = 0
+
+a = (10000(i/d_model)) #1

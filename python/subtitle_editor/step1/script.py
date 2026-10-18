@@ -29,4 +29,4 @@ def convert_srt_to_txt(srt_filename, txt_filename):
         file.write('\n\n'.join(cleaned_sentences))
 
 if __name__ == '__main__':
-    convert_srt_to_txt('sample1.srt', 'cleaned.txt')
+    convert_srt_to_txt('subt1.srt', 'cleaned.txt')
