@@ -1,6 +1,8 @@
-import re
+import re, glob
 
-def convert_srt_to_txt(srt_filename, txt_filename):
+file = glob.glob("*.srt")[0]
+
+def srt2txt(srt_filename, txt_filename):
     with open(srt_filename, 'r', encoding='utf-8') as file:
         content = file.read()
 
@@ -29,4 +31,5 @@ def convert_srt_to_txt(srt_filename, txt_filename):
         file.write('\n\n'.join(cleaned_sentences))
 
 if __name__ == '__main__':
-    convert_srt_to_txt('subt1.srt', 'cleaned.txt')
+    srt2txt(file, 'clean_data.txt')
+    

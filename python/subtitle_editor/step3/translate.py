@@ -1,5 +1,6 @@
-import json
-import re
+import json, re, glob
+
+file = glob.glob("*.srt")[0]
 
 def translate_srt_partial(srt_filename, json_filename, output_filename):
     # Load the translation dictionary
@@ -61,4 +62,4 @@ def translate_srt_partial(srt_filename, json_filename, output_filename):
             f.write(f"{i}\n{item['start']} --> {item['end']}\n{item['text']}\n\n")
 
 if __name__ == '__main__':
-    translate_srt_partial('subt1.srt', 'dict.json', 'subt2.srt')
+    translate_srt_partial(file, 'dict.json', 'subt2.srt')
