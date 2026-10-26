@@ -1,0 +1,13 @@
+https://github.com/aworld01/cheatsheets.git
+
+git@github.com:aworld01/cheatsheets.git
+
+git@github.com:aworld01/python_exercises_and_projects.git
+
+git@github.com:aworld01/math.git
+
+git@github.com:aworld01/aw01.io.git
+
+git@github.com:aworld01/Test.git
+
+
