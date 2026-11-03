@@ -1,7 +1,7 @@
 import json, re, glob
 
-# Define the output filename so we can exclude it from input search
-OUTPUT_FILENAME = 'subt2.srt'
+name = glob.glob("*.srt")[0]
+OUTPUT_FILENAME = f'hindi_{name}'
 
 # Find all SRT files except the output file
 srt_files = [f for f in glob.glob("*.srt") if f != OUTPUT_FILENAME]

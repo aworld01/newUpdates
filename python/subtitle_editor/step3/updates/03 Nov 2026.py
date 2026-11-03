@@ -1,6 +1,14 @@
 import json, re, glob
 
-file = glob.glob("*.srt")[0]
+# Define the output filename so we can exclude it from input search
+OUTPUT_FILENAME = 'subt2.srt'
+
+# Find all SRT files except the output file
+srt_files = [f for f in glob.glob("*.srt") if f != OUTPUT_FILENAME]
+if not srt_files:
+    raise FileNotFoundError("No input SRT file found!")
+
+file = srt_files[0]
 db = glob.glob("*.json")[0]
 
 def translate_srt_partial(srt_filename, json_filename, output_filename):
@@ -63,4 +71,4 @@ def translate_srt_partial(srt_filename, json_filename, output_filename):
             f.write(f"{i}\n{item['start']} --> {item['end']}\n{item['text']}\n\n")
 
 if __name__ == '__main__':
-    translate_srt_partial(file, db, 'subt2.srt')
+    translate_srt_partial(file, db, OUTPUT_FILENAME)
