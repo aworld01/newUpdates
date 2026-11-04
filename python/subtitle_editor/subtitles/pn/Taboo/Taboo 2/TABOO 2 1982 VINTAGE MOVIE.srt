@@ -223,7 +223,7 @@ We just call him Jr.
 
 55
 00:05:14,260 --> 00:05:15,610
-Jr., He doesn't look like a Jr. to me.
+He doesn't look like a Jr. to me.
 
 56
 00:05:16,440 --> 00:05:19,030
