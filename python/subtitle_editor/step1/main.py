@@ -23,7 +23,7 @@ def srt2txt(srt_filename, txt_filename):
     full_text = re.sub(r'\s+', ' ', full_text)
 
     # Split lines only at periods (.), keeping the period; otherwise join everything
-    sentences = re.split(r'(?<=[.?])\s+', full_text)
+    sentences = re.split(r'(?<=[.?!])\s+', full_text)
     cleaned_sentences = [s.strip() for s in sentences if s.strip()]
 
     # Write the result to the output file with double newlines separating each sentence/turn
