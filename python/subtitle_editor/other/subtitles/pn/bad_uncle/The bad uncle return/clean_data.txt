@@ -8,10 +8,10 @@ The niece he never had.
 उनकी कोई भतीजी नहीं थी।
 
 I want you to come inside of me, Uncle Joe.
-अंकल जो, मैं चाहती हूँ कि तुम मेरे अंदर झड़ जाओ।
+मैं चाहती हूँ कि तुम मेरे अंदर हि झड़ जाओ, अंकल जो।
 
 Oh, you're so amazing.
-ओह, आप तो बहुत कमाल के हो!
+ओह, आप बहुत कमाल के हो!
 
 What's wrong, Uncle Joe?
 क्या हुआ, अंकल जो?
@@ -56,7 +56,7 @@ Please, I'll do anything.
 कृपया, मैं कुछ भी करूँगी।
 
 Your step-sister, Kami, how old is she?
-तुम्हारी सौतेली बहन, केमी, कितनी बड़ी है?
+तुम्हारी सौतेली बहन, केमी, उसकी क्या उम्र है?
 
 She just turned 18, why?
 वह अभी-अभी 18 साल की हुई है, क्यों?
@@ -127,7 +127,7 @@ You know what, I got these bags.
 Why don't you finish giving it to the tour first?
 
 Show around, check out the whole house.
-घुमाकर पूरा घर दिखाओ।
+इसे लेजाकर पूरा घर दिखाओ।
 
 Really, we have a week out.
 सच में, हमारे पास एक हफ़्ता है।
@@ -144,7 +144,7 @@ Uncle Joe, hey, you didn't happen to see my swimming suit.
 अंकल जो, क्या आपने कहीं मेरा स्विमिंग सूट देखा?
 
 Did you when you were taking our stuff up, right?
-जब आप हमारा सामान ऊपर ले जा रहे थे, तब आपने देखा था, ना?
+जब आप हमारा सामान ऊपर ले जा रहे थे?
 
 No, I just took your bag upstairs.
 नहीं, मैं तो सिर्फ़ तुम्हारा बैग ऊपर ले गया था।
@@ -153,8 +153,10 @@ See, I told you, Kami.
 देखा, मैंने तुमसे कहा था, केमी।
 
 You probably just forgot to pack it.
+तुम शायद इसे पैक करना ही भूल गई।
 
 I just knew that I did, though.
+लेकिन मुझे पक्का पता है कि मैंने इसे पैक किया था।
 
 I was so excited to swim.
 मैं तैरने को लेकर बहुत उत्साहित थी।
@@ -186,6 +188,7 @@ Okay.
 Yeah, I didn't sound creepy at all.
 
 Last one is a rotten egg.
+जो सबसे आख़िर में आएगा, वह सड़ा अंडा है!
 
 Oh my god.
 हे भगवान!
@@ -196,7 +199,8 @@ Ooh, it smells really good.
 Ooh.
 ओहो!
 
-Uncle Joe feels nice.
+I told you feels nice.
+मैंने तुमसे कहा था न, अच्छा लगता है।
 
 You remember when we were kids, Kami?
 केमी।, तुम्हें याद है जब हम बच्चे थे?
@@ -298,13 +302,14 @@ I want you to go inside and get me an embassy.
 I'll do the best that I can.
 मैं अपनी पूरी कोशिश करूँगी।
 
-Is that you?
+Diana is that you?
 क्या यह तुम हो?
 
-No, it's all nonsense.
-नहीं, यह सब बकवास है।
+No, it's Uncle Joe..
+नहीं, यह अंकल जो हैं..
 
-Stay up, stay up, wake up!
+Diana, Diana, wake up!
+डायना, डायना, उठो!
 
 What are you doing in here?
 आप यहाँ अंदर क्या कर रहे हैं?
@@ -316,12 +321,13 @@ It's okay.
 ठीक है।
 
 What do you mean stop?
-“रुको” कहने का क्या मतलब है?
+क्या मतलब रुको?
 
 What do you mean it's okay?
-तुम्हारा “ठीक है” कहने का क्या मतलब है?
+क्या मतलब ठीक है?
 
 What do you mean you know?
+क्या मतलब तुम जानती हो?
 
 Stop.
 रुको।
@@ -333,7 +339,7 @@ What are you talking about?
 तुम किस बारे में बात कर रही हो?
 
 What do you mean he has a special gift?
-“उनके पास एक ख़ास तोहफ़ा है” का क्या मतलब है?
+“क्या मतलब उनके पास एक ख़ास तोहफ़ा है?
 
 Why are you in here?
 आप यहाँ अंदर क्यों आये हैं?
@@ -360,16 +366,16 @@ Why are you saying all this?
 तुम यह सब क्यों कह रहे हो?
 
 Why are you talking like this, Diana?
-डायना, तुम ऐसे क्यों बात कर रही हो?
+तुम ऐसे क्यों बात कर रही हो, डायना?
 
 Don't you want to make your Uncle Joe happy?
 क्या तुम अपने अंकल जो को खुश नहीं करना चाहती?
 
-Why are you doing this, Uncle Joe?
-आप यह सब क्यों कर रहे हैं, अंकल जो?
+Why is she doing this, Uncle Joe?
+वह ऐसा क्यों कर रही है, अंकल जो?
 
-Why are you acting like this?
-तुम ऐसा व्यवहार क्यों कर रही हो?
+Why is she acting like this?
+वह ऐसा व्यवहार क्यों कर रही है?
 
 What are you doing, Diana?
 तुम क्या कर रही हो, डायना?
@@ -724,42 +730,54 @@ Watch the teeth.
 You're not getting better?
 
 She got better fast.
+यह जल्दी ही बेहतर हो गई।
 
 You're the youngest of us.
 
-I feel like my young teenage ass.
+Do you like my young teenage ass.
+ क्या आपको मेरी जवान गांड पसंद है?
 
 I love it.
+मुझे यह बहुत पसंद है।
 
 And Uncle Joe loves both of you.
+और अंकल जो तुम दोनों को बहुत प्यार करते हैं।
 
-There's something else I want you to learn.
+There's something else I want you to learn Kami.
+मैं चाहती हूँ कि तुम कुछ और भी सीखो।
 
 No, you've never done this before.
+नहीं, तुमने पहले कभी ऐसा नहीं किया।
 
 It's super easy.
+यह बहुत ही आसान है।
 
-You want me to eat your pussy?
+Do you want me to eat your pussy?
+क्या तुम चाहती हो कि मैं तुम्हारी चुत चाटूँ?
 
 Do you want me to eat your pussy?
 
 Be careful.
+ध्यान से।
 
-I like that.
+Yeah, like that.
+हाँ, ऐसे ही।
 
 Just use your tongue.
+जीभ लगाओ।
 
 Oh my God.
 
 Stay on it.
-
-Yeah, like that.
+करती रहो।
 
 Spit on it too.
+इस पर थूक दो।
 
 Oh my God, you're going to kill me.
 
 Yeah, you like that.
+हाँ, तुम्हें वह पसंद है।
 
 Oh.
 
@@ -772,52 +790,67 @@ You're great!
 You're good?
 
 I have an idea.
+मेरे पास एक आइडिया है।
 
 I'll just be like, ouch.
 
 I'm gonna show her something.
+मैं उसे कुछ दिखाने वाली हूँ।
 
 I like the sound of the rock.
 
 You're so smart.
+तुम बहुत होशियार हो।
 
 Good night and well.
 
 That looks so hot.
+यह कितना हॉट लग रहा है!
 
 Yeah, he likes it so much.
 
 That's so hot.
+यह कितना हॉट है!
 
 Are you watching how I'm doing it?
+देख रही हो ना कि मैं यह कैसे कर रही हूँ?
 
 I am.
+हाँ, मैं देख रही हूँ।
 
 Is it my turn?
+क्या अब मेरी बारी है?
 
 Just like that?
+बस ऐसे ही?
 
-I don't know what you have faced the other way.
+I want your face the other way.
+मैं चाहती हूँ कि तुम अपना चेहरा दूसरी तरफ़ करो।
 
 I'll try it like that.
+मैं इसे उसी तरह आज़माऊँगी।
 
 No, no, no, no.
 
-We have a spin on it.
-
-He's spinning it.
+You have a spit on it.
+थुक लगाओ।
 
 He had just turned it in and it went like that.
 
 You're a teacher, Diana.
+तुम एक टीचर हो, डायना।
 
 That feels really good.
+बहुत अच्छा महसूस हो रहा है।
 
 That's so deep.
+यह बहुत गहरा है।
 
 Just like that.
+बिल्कुल ऐसे ही।
 
 Oh my god, you're doing so good.
+हे भगवान, तुम बहुत अच्छा कर रही हो।
 
 Oh...
 
@@ -827,45 +860,61 @@ Oh, my god.
 
 It's good.
 
-That's going so deep.
+That's going in so deep.
+यह बहुत अंदर तक जा रहा है।
 
 Oh, it feels so good.
 
 Oh, my God.
 
 It's so tight.
+यह बहुत टाइट है।
 
 Oh, I love that too, you fucker.
+ओह, मुझे भी वह बहुत पसंद है, हरामी।
 
 It feels so good.
 
 You're making her feel really good, Uncle Joe.
+आप उसे सच में बहुत अच्छा महसूस करा रहे हैं, अंकल जो।
 
 I like to take my time.
+मुझे आराम से करना पसंद है।
 
 I'm just teaser.
+मैं बस छेड़ रहा हूँ।
 
 Oh, my God, you have been so good.
+हे भगवान, तुमने तो बहुत अच्छा किया है।
 
 You're making her feel good, Uncle Joe.
+आप उसे अच्छा महसूस करा रहे हैं, अंकल जो।
 
 Oh, my God, Joe, are you going to come for me?
 
 Only a few girls are going to share it.
+केवल कुछ ही लड़कियाँ इसे बाँटने वाली हैं।
 
 Are you going to come for her, Uncle Joe?
+क्या आप उसके लिए झड़ने वाले हैं, अंकल जो?
 
 I'm going to come for the both of you.
+मैं तुम दोनों के लिए झड़ने वाला हूँ।
 
 I'm going to come right here.
+मैं यहीं झड़ने वाला हूँ।
 
 And then I want you to suck it up in your mouth.
+और फिर मैं चाहता हूँ कि तुम इसे अपने मुँह में चूस लो।
 
-And then you're going to spit it in my eyes.
+And then you're going to spit it in her mouth.
+और फिर तुम इसे उसके मुँह में थूकने वाली हो।
 
-I've never tasted a combo before.
+I've never tasted cum before.
+मैंने पहले कभी वीर्य नहीं चखा।
 
 Are you two going to share it nice?
+क्या तुम दोनों इसे अच्छे से बाँटोगी?
 
 You're wrong.
 
@@ -875,39 +924,53 @@ You're pulling the chair.
 
 You're crying, Uncle Joe.
 
-You want to eat it.
+You want to test it.
 
 Oh, I didn't ready to come.
 
-Oh, my gosh, that's a lot of code.
+Oh, my gosh, that's a lot of cum.
+हे भगवान, इतना सारा वीर्य!
 
-Why don't you taste it, can we?
+Why don't you taste it, Kami?
+क्यों न तुम इसे चखो, केमी?
 
 And let me have some, too.
+और मुझे भी थोड़ा लेने दो।
 
-I mean, I've never tasted a combo before.
+I mean, I've never tasted a cum before.
+मेरा मतलब है, मैंने पहले कभी वीर्य नहीं चखा।
 
 You can do it.
+तुम कर सकती हो।
 
 You'll love it.
+तुम्हें यह बहुत पसंद आएगा।
 
 Does it taste good?
+क्या इसका स्वाद अच्छा है?
 
 Yes, it does.
+हाँ, अच्छा है।
 
 Oh, yeah, let me have some.
+ओह, हाँ, मुझे भी थोड़ा दो।
 
-Yeah, it's a good girl.
+Yeah, that's a good girl.
+हाँ, शाबाश!
 
-Oh, my gosh.
+Oh, my gosh!
+हे भगवान!
 
 It tastes so different.
+इसका स्वाद बहुत अलग है।
 
 It tastes good though.
+फिर भी अच्छा है।
 
-I better suck it up.
+It's a better suck it up.
 
-Yeah, I just like that.
+Yeah, just like that.
+हाँ, बिल्कुल ऐसे ही।
 
 Well, that wraps that up, ladies.
 खैर, बस इतना ही, लेडीज़।
