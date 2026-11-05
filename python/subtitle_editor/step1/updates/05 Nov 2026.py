@@ -1,6 +1,8 @@
-import re
+import re, glob
 
-def convert_srt_to_txt(srt_filename, txt_filename):
+file = glob.glob("*.srt")[0]
+
+def srt2txt(srt_filename, txt_filename):
     with open(srt_filename, 'r', encoding='utf-8') as file:
         content = file.read()
 
@@ -21,7 +23,7 @@ def convert_srt_to_txt(srt_filename, txt_filename):
     full_text = re.sub(r'\s+', ' ', full_text)
 
     # Split lines only at periods (.), keeping the period; otherwise join everything
-    sentences = re.split(r'(?<=[.?])\s+', full_text)
+    sentences = re.split(r'(?<=[.?!])\s+', full_text)
     cleaned_sentences = [s.strip() for s in sentences if s.strip()]
 
     # Write the result to the output file with double newlines separating each sentence/turn
@@ -29,4 +31,5 @@ def convert_srt_to_txt(srt_filename, txt_filename):
         file.write('\n\n'.join(cleaned_sentences))
 
 if __name__ == '__main__':
-    convert_srt_to_txt('subt1.srt', 'cleaned.txt')
+    srt2txt(file, 'clean_data.txt')
+    
