@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Date Widget</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#0b0f17;
+    --panel:#141a26;
+    --card:#1b2231;
+    --card2:#212a3c;
+    --text:#e9eefb;
+    --muted:#8b97ad;
+    --border:#28324a;
+    --accent:#5b8cff;
+    --shadow:0 24px 60px rgba(0,0,0,.55);
+  }
+  [data-theme="light"]{
+    color-scheme: light;
+    --bg:#eef2f9;
+    --panel:#ffffff;
+    --card:#f4f7fc;
+    --card2:#e9eff9;
+    --text:#152036;
+    --muted:#5d6b85;
+    --border:#dbe3f0;
+    --accent:#2f6bff;
+    --shadow:0 20px 45px rgba(30,50,90,.16);
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    padding:14px;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(900px 500px at 50% -10%, rgba(91,140,255,.18), transparent 62%),
+      var(--bg);
+    transition: background .25s ease, color .25s ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- shell ---------- */
+  .widget{
+    width:360px;
+    max-width:100%;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 14px 8px;
+    -webkit-app-region: drag;              /* enables dragging in Electron */
+  }
+  .brand{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; letter-spacing:.2px;
+  }
+  .brand .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent); box-shadow:0 0 12px var(--accent);
+  }
+  .icon-btn{
+    -webkit-app-region:no-drag;
+    width:28px; height:28px; display:grid; place-items:center;
+    border:1px solid var(--border); border-radius:9px;
+    background:var(--card); color:var(--text);
+    font-size:13px; cursor:pointer; transition:.16s;
+  }
+  .icon-btn:hover{ background:var(--card2); border-color:var(--accent); }
+
+  /* ---------- tabs ---------- */
+  .tabs{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:4px;
+    padding:0 10px 10px;
+    -webkit-app-region:no-drag;
+  }
+  .tab{
+    padding:7px 2px; border:0; border-radius:9px;
+    background:transparent; color:var(--muted);
+    font:inherit; font-size:11.5px; font-weight:600;
+    cursor:pointer; transition:.16s;
+  }
+  .tab:hover{ color:var(--text); background:var(--card); }
+  .tab.active{
+    color:#fff; background:var(--accent);
+    box-shadow:0 4px 14px rgba(91,140,255,.35);
+  }
+
+  /* ---------- panels ---------- */
+  .panel{ display:none; padding:2px 14px 14px; }
+  .panel.active{ display:block; animation:fade .18s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .grid3{ display:grid; grid-template-columns:.9fr .85fr 1.05fr; gap:8px; margin-top:8px; }
+
+  .field{ display:flex; flex-direction:column; gap:5px; min-width:0; }
+  .field label{
+    font-size:10px; text-transform:uppercase; letter-spacing:.7px;
+    color:var(--muted); font-weight:700;
+  }
+  input, select{
+    width:100%;
+    padding:8px 9px;
+    font:inherit; font-size:12.5px;
+    color:var(--text);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:9px;
+    outline:none;
+    transition:.16s;
+  }
+  input:focus, select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(91,140,255,.18);
+    background:var(--card2);
+  }
+
+  /* ---------- results ---------- */
+  .result{
+    margin-top:11px;
+    padding:12px 13px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:linear-gradient(180deg, rgba(91,140,255,.13), rgba(91,140,255,.03));
+  }
+  .big{
+    font-size:30px; font-weight:750; letter-spacing:-.8px; line-height:1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .big.date{ font-size:19px; letter-spacing:-.2px; }
+  .big .unit{
+    font-size:12px; font-weight:600; color:var(--muted);
+    margin-left:6px; letter-spacing:0;
+  }
+  .sub{
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    font-size:11.5px; color:var(--muted); padding-top:5px;
+  }
+  .sub b{ color:var(--text); font-weight:650; font-variant-numeric: tabular-nums; }
+  .hint{ font-size:12px; color:var(--muted); }
+
+  /* ---------- countdown ---------- */
+  .cd-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
+  .cd-cell{
+    background:var(--card2); border:1px solid var(--border);
+    border-radius:10px; padding:9px 2px; text-align:center;
+  }
+  .cd-num{
+    font-size:20px; font-weight:750; letter-spacing:-.6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .cd-lab{
+    font-size:9px; text-transform:uppercase; letter-spacing:.8px;
+    color:var(--muted); margin-top:3px; font-weight:700;
+  }
+
+  /* ---------- footer ---------- */
+  .foot{
+    display:flex; justify-content:space-between; gap:10px;
+    padding:8px 14px 11px;
+    font-size:10.5px; color:var(--muted);
+    border-top:1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="widget">
+  <header>
+    <div class="brand"><span class="dot"></span>Date Widget</div>
+    <button class="icon-btn" id="themeBtn" title="Toggle theme">☀️</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="between">Between</button>
+    <button class="tab" data-tab="addsub">Add/Sub</button>
+    <button class="tab" data-tab="age">Age</button>
+    <button class="tab" data-tab="count">Count</button>
+  </nav>
+
+  <main>
+    <!-- BETWEEN -->
+    <section class="panel active" data-panel="between">
+      <div class="grid2">
+        <div class="field"><label for="bFrom">From</label><input type="date" id="bFrom"></div>
+        <div class="field"><label for="bTo">To</label><input type="date" id="bTo"></div>
+      </div>
+      <div class="result" id="bOut"></div>
+    </section>
+
+    <!-- ADD / SUBTRACT -->
+    <section class="panel" data-panel="addsub">
+      <div class="field"><label for="aDate">Start date</label><input type="date" id="aDate"></div>
+      <div class="grid3">
+        <div class="field">
+          <label for="aOp">Op</label>
+          <select id="aOp"><option value="add">Add</option><option value="sub">Subtract</option></select>
+        </div>
+        <div class="field">
+          <label for="aAmount">Amount</label>
+          <input type="number" id="aAmount" min="0" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="aUnit">Unit</label>
+          <select id="aUnit">
+            <option value="days">Days</option>
+            <option value="weeks">Weeks</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+          </select>
+        </div>
+      </div>
+      <div class="result" id="aOut"></div>
+    </section>
+
+    <!-- AGE -->
+    <section class="panel" data-panel="age">
+      <div class="grid2">
+        <div class="field"><label for="gBirth">Birth date</label><input type="date" id="gBirth"></div>
+        <div class="field"><label for="gAsOf">As of</label><input type="date" id="gAsOf"></div>
+      </div>
+      <div class="result" id="gOut"></div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="panel" data-panel="count">
+      <div class="grid2">
+        <div class="field"><label for="cDate">Target date</label><input type="date" id="cDate"></div>
+        <div class="field"><label for="cTime">Time</label><input type="time" id="cTime"></div>
+      </div>
+      <div class="result" id="cOut"></div>
+    </section>
+  </main>
+
+  <div class="foot">
+    <span id="todayLabel">—</span>
+    <span>local time</span>
+  </div>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  /* ============================================================
+     CONSTANTS & DATE HELPERS  (all math done in UTC to dodge DST)
+     ============================================================ */
+  const MS = 86400000;
+  const pad2 = n => String(n).padStart(2, "0");
+
+  const parseISO = s => {
+    if (!s) return null;
+    const [y, m, d] = s.split("-").map(Number);
+    if (!y || !m || !d) return null;
+    return Date.UTC(y, m - 1, d);
+  };
+
+  const todayISO = () => {
+    const n = new Date();
+    return `${n.getFullYear()}-${pad2(n.getMonth() + 1)}-${pad2(n.getDate())}`;
+  };
+
+  const isoAddDays = (iso, n) => {
+    const ts = parseISO(iso);
+    if (ts == null) return iso;
+    const d = new Date(ts + n * MS);
+    return `${d.getUTCFullYear()}-${pad2(d.getUTCMonth() + 1)}-${pad2(d.getUTCDate())}`;
+  };
+
+  // Build a UTC timestamp, clamping the day to the month's real length
+  const makeUTCDate = (y, m, d) => {
+    const dim = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+    return Date.UTC(y, m, Math.min(d, dim));
+  };
+
+  const addMonthsUTC = (ts, n) => {
+    const d = new Date(ts);
+    return makeUTCDate(d.getUTCFullYear(), d.getUTCMonth() + n, d.getUTCDate());
+  };
+
+  const addUnits = (ts, amount, unit) => {
+    switch (unit) {
+      case "days":   return ts + amount * MS;
+      case "weeks":  return ts + amount * 7 * MS;
+      case "months": return addMonthsUTC(ts, amount);
+      case "years":  return addMonthsUTC(ts, amount * 12);
+      default:       return ts;
+    }
+  };
+
+  // Robust calendar difference (years / months / days)
+  const ymdDiff = (aTs, bTs) => {
+    const a = new Date(aTs), b = new Date(bTs);
+    let years = b.getUTCFullYear() - a.getUTCFullYear();
+    let anchor = makeUTCDate(a.getUTCFullYear() + years, a.getUTCMonth(), a.getUTCDate());
+    if (anchor > bTs) {
+      years--;
+      anchor = makeUTCDate(a.getUTCFullYear() + years, a.getUTCMonth(), a.getUTCDate());
+    }
+    let months = 0;
+    while (true) {
+      const next = addMonthsUTC(anchor, 1);
+      if (next <= bTs) { anchor = next; months++; } else break;
+    }
+    return { years, months, days: Math.round((bTs - anchor) / MS) };
+  };
+
+  const workdays = (aTs, bTs) => {
+    const n = Math.round((bTs - aTs) / MS);
+    if (n > 20000) return null;           // safety guard
+    let c = 0;
+    for (let i = 0; i < n; i++) {
+      const wd = new Date(aTs + i * MS).getUTCDay();
+      if (wd !== 0 && wd !== 6) c++;
+    }
+    return c;
+  };
+
+  const fmtDate = ts =>
+    new Date(ts).toLocaleDateString(undefined, {
+      weekday: "short", year: "numeric", month: "short", day: "numeric",
+      timeZone: "UTC"
+    });
+
+  const weekdayOf = ts =>
+    new Date(ts).toLocaleDateString(undefined, { weekday: "long", timeZone: "UTC" });
+
+  const nextBirthday = (birthTs, asofTs) => {
+    const b = new Date(birthTs), a = new Date(asofTs);
+    let nb = makeUTCDate(a.getUTCFullYear(), b.getUTCMonth(), b.getUTCDate());
+    if (nb < asofTs) nb = makeUTCDate(a.getUTCFullYear() + 1, b.getUTCMonth(), b.getUTCDate());
+    return nb;
+  };
+
+  /* ============================================================
+     STATE  (persisted in localStorage)
+     ============================================================ */
+  const KEY = "dateWidget.v1";
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { return {}; } };
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {} };
+
+  const state = Object.assign({
+    tab: "between",
+    theme: "dark",
+    bFrom: "", bTo: "",
+    aDate: "", aOp: "add", aAmount: 30, aUnit: "days",
+    gBirth: "", gAsOf: "",
+    cDate: "", cTime: "00:00"
+  }, load());
+
+  const today = todayISO();
+  if (!state.bFrom) state.bFrom = today;
+  if (!state.bTo)   state.bTo   = isoAddDays(today, 30);
+  if (!state.aDate) state.aDate = today;
+  if (!state.gAsOf) state.gAsOf = today;
+  if (!state.cDate) state.cDate = isoAddDays(today, 30);
+
+  const $ = sel => document.querySelector(sel);
+
+  /* ============================================================
+     RENDERERS
+     ============================================================ */
+  function renderBetween() {
+    const out = $("#bOut");
+    const a = parseISO(state.bFrom), b = parseISO(state.bTo);
+    if (a == null || b == null) {
+      out.innerHTML = `<div class="hint">Pick two dates to compare.</div>`;
+      return;
+    }
+    const swapped = a > b;
+    const s = Math.min(a, b), e = Math.max(a, b);
+    const days = Math.round((e - s) / MS);
+    const { years, months, days: dd } = ymdDiff(s, e);
+    const wd = workdays(s, e);
+
+    out.innerHTML = `
+      <div class="big">${days.toLocaleString()}<span class="unit">days</span></div>
+      <div class="sub"><span>Weeks</span><b>${Math.floor(days / 7)} w ${days % 7} d</b></div>
+      <div class="sub"><span>Calendar</span><b>${years} y ${months} m ${dd} d</b></div>
+      <div class="sub"><span>Weekdays (Mon–Fri)</span><b>${wd === null ? "—" : wd.toLocaleString()}</b></div>
+      ${swapped ? `<div class="sub"><span>Note</span><b>dates were swapped</b></div>` : ""}
+    `;
+  }
+
+  function renderAddSub() {
+    const out = $("#aOut");
+    const base = parseISO(state.aDate);
+    const amt = parseInt(state.aAmount, 10);
+    if (base == null || isNaN(amt)) {
+      out.innerHTML = `<div class="hint">Enter a start date and an amount.</div>`;
+      return;
+    }
+    const signed = (state.aOp === "sub" ? -1 : 1) * amt;
+    const res = addUnits(base, signed, state.aUnit);
+    const diff = Math.round((res - base) / MS);
+
+    out.innerHTML = `
+      <div class="big date">${fmtDate(res)}</div>
+      <div class="sub"><span>Weekday</span><b>${weekdayOf(res)}</b></div>
+      <div class="sub"><span>Change</span><b>${diff >= 0 ? "+" : ""}${diff.toLocaleString()} days</b></div>
+    `;
+  }
+
+  function renderAge() {
+    const out = $("#gOut");
+    const birth = parseISO(state.gBirth), asof = parseISO(state.gAsOf);
+    if (birth == null) { out.innerHTML = `<div class="hint">Enter a birth date.</div>`; return; }
+    if (asof == null)  { out.innerHTML = `<div class="hint">Enter an “as of” date.</div>`; return; }
+    if (asof < birth)  { out.innerHTML = `<div class="hint">“As of” is before the birth date.</div>`; return; }
+
+    const { years, months, days } = ymdDiff(birth, asof);
+    const totalDays = Math.round((asof - birth) / MS);
+    const nb = nextBirthday(birth, asof);
+    const toBirthday = Math.round((nb - asof) / MS);
+
+    out.innerHTML = `
+      <div class="big">${years}<span class="unit">yr ${months} mo ${days} d</span></div>
+      <div class="sub"><span>Total days</span><b>${totalDays.toLocaleString()}</b></div>
+      <div class="sub"><span>Total weeks</span><b>${Math.floor(totalDays / 7).toLocaleString()}</b></div>
+      <div class="sub"><span>Next birthday</span><b>${toBirthday === 0 ? "🎉 Today!" : "in " + toBirthday + " days"}</b></div>
+    `;
+  }
+
+  function targetTs() {
+    if (!state.cDate) return null;
+    const [y, m, d] = state.cDate.split("-").map(Number);
+    if (!y || !m || !d) return null;
+    const [hh, mm] = (state.cTime || "00:00").split(":").map(Number);
+    return new Date(y, m - 1, d, hh || 0, mm || 0, 0, 0).getTime();
+  }
+
+  const cdCell = (v, l) =>
+    `<div class="cd-cell"><div class="cd-num">${v}</div><div class="cd-lab">${l}</div></div>`;
+
+  function renderCountdown() {
+    const out = $("#cOut");
+    const t = targetTs();
+    if (t == null) { out.innerHTML = `<div class="hint">Pick a target date and time.</div>`; return; }
+
+    let diff = t - Date.now();
+    const past = diff < 0;
+    diff = Math.abs(diff);
+
+    const d = Math.floor(diff / MS);
+    const h = Math.floor((diff % MS) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+
+    out.innerHTML = `
+      <div class="cd-grid">
+        ${cdCell(d.toLocaleString(), "days")}
+        ${cdCell(pad2(h), "hrs")}
+        ${cdCell(pad2(m), "min")}
+        ${cdCell(pad2(s), "sec")}
+      </div>
+      <div class="sub">
+        <span>${past ? "Since" : "Until"}</span>
+        <b>${fmtDate(parseISO(state.cDate))} · ${state.cTime || "00:00"}</b>
+      </div>
+      ${past ? `<div class="sub"><span>Status</span><b>already passed</b></div>` : ""}
+    `;
+  }
+
+  function render() {
+    switch (state.tab) {
+      case "between": renderBetween(); break;
+      case "addsub":  renderAddSub();  break;
+      case "age":     renderAge();     break;
+      case "count":   renderCountdown(); break;
+    }
+  }
+
+  /* ============================================================
+     THEME + TABS
+     ============================================================ */
+  function applyTheme() {
+    document.documentElement.setAttribute("data-theme", state.theme);
+    $("#themeBtn").textContent = state.theme === "dark" ? "☀️" : "🌙";
+  }
+
+  $("#themeBtn").addEventListener("click", () => {
+    state.theme = state.theme === "dark" ? "light" : "dark";
+    applyTheme(); save();
+  });
+
+  document.querySelectorAll(".tab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.tab = btn.dataset.tab;
+      save();
+      document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b === btn));
+      document.querySelectorAll(".panel").forEach(p =>
+        p.classList.toggle("active", p.dataset.panel === state.tab));
+      render();
+    });
+  });
+
+  /* ============================================================
+     INPUT BINDING
+     ============================================================ */
+  const FIELDS = ["bFrom","bTo","aDate","aOp","aAmount","aUnit","gBirth","gAsOf","cDate","cTime"];
+
+  FIELDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.value = state[id] ?? "";
+    const handler = () => {
+      state[id] = el.value;
+      save();
+      render();
+    };
+    el.addEventListener("input", handler);
+    el.addEventListener("change", handler);
+  });
+
+  /* ============================================================
+     BOOT
+     ============================================================ */
+  applyTheme();
+
+  // restore active tab visual state
+  document.querySelectorAll(".tab").forEach(b =>
+    b.classList.toggle("active", b.dataset.tab === state.tab));
+  document.querySelectorAll(".panel").forEach(p =>
+    p.classList.toggle("active", p.dataset.panel === state.tab));
+
+  $("#todayLabel").textContent = fmtDate(parseISO(today));
+  render();
+
+  // live countdown tick (only while visible → no wasted work)
+  setInterval(() => { if (state.tab === "count") renderCountdown(); }, 1000);
+
+  // keep "today" fresh if the widget stays open past midnight
+  setInterval(() => {
+    $("#todayLabel").textContent = fmtDate(parseISO(todayISO()));
+  }, 60000);
+})();
+</script>
+</body>
+</html>
